@@ -1,7 +1,8 @@
 import rlgym
+import numpy as np
 
 env = rlgym.make()
-max_games= 100
+max_games= 10
 for i in range(max_games):
     obs = env.reset()
     done = False
@@ -11,5 +12,7 @@ for i in range(max_games):
       action = env.action_space.sample() 
       
       next_obs, reward, done, gameinfo = env.step(action)
+      obs_arr = np.array(next_obs)
       
       obs = next_obs
+env.close()
